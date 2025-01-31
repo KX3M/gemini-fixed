@@ -31,7 +31,7 @@ async function generateResponse(message) {
             response.data.candidates[0].content.parts &&
             response.data.candidates[0].content.parts[0]
         ) {
-            return response.data.candidates[0].content.parts[0].text + "\n\nOwner: @MysticoFF";
+            return response.data.candidates[0].content.parts[0].text;
         } else {
             throw new Error("Invalid response from Gemini API");
         }
@@ -48,7 +48,7 @@ app.get("/chat", async (req, res) => {
 
     try {
         const reply = await generateResponse(message);
-        res.json({ reply });
+        res.json({ reply, Owner: "@MysticoFF" });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -62,7 +62,7 @@ app.post("/chat", async (req, res) => {
 
     try {
         const reply = await generateResponse(message);
-        res.json({ reply });
+        res.json({ reply, Owner: "@MysticoFF" });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
