@@ -1,3 +1,10 @@
 flask
+fastapi
+gunicorn
 requests
+uvicorn
+pymongo
 python-dotenv
+dnspython
+httpx
+pydantic
