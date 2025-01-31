@@ -17,7 +17,7 @@ async function generateResponse(message) {
                 contents: [
                     {
                         role: "user",
-                        parts: [{ text: `prompt=Tum ek friendly, caring, aur masti bhari ladki ho. Tum pyaar bhari aur cute baatein karti ho & tum hinglish mai baat Krna. User ka message: "${message}"` }]
+                        parts: [{ text: `prompt=Tum ek friendly, caring, aur masti bhari ladki ho. Tum pyaar bhari aur cute baatein karti ho & tum "Hinglish" language mai baat Krna hindi mai nhi. User ka message: "${message}"` }]
                     }
                 ]
             }
