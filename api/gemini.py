@@ -19,7 +19,7 @@ def generate_response(message):
                 {
                     "role": "user",
                     "parts": [
-                        {"text": f'reply according to this prompt={PROMPT} User ka message: "{message}"'}
+                        {"text": f'reply to user according to this prompt={PROMPT} User ka message: "{message}"'}
                     ]
                 }
             ]
