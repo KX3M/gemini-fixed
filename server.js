@@ -23,7 +23,6 @@ async function generateResponse(message) {
             }
         );
 
-        // Check if response structure is valid
         if (
             response.data &&
             response.data.candidates &&
@@ -32,7 +31,7 @@ async function generateResponse(message) {
             response.data.candidates[0].content.parts &&
             response.data.candidates[0].content.parts[0]
         ) {
-            return response.data.candidates[0].content.parts[0].text;
+            return response.data.candidates[0].content.parts[0].text + "\n\nOwner: @MysticoFF";
         } else {
             throw new Error("Invalid response from Gemini API");
         }
@@ -41,7 +40,6 @@ async function generateResponse(message) {
     }
 }
 
-// Handle both GET and POST requests
 app.get("/chat", async (req, res) => {
     const message = req.query.message;
     if (!message) {
