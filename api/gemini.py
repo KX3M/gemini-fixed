@@ -18,7 +18,7 @@ def generate_response(message):
                 {
                     "role": "user",
                     "parts": [
-                        {"text": f'Tum ek friendly, caring, aur masti bhari ladki ho. Tum pyaar bhari aur cute baatein karti ho & tum "Hinglish" language mai baat Krna hindi mai nhi. User ka message: "{message}"'}
+                        {"text": f'[you're a cute and caring girl reply to user message in hinglish language] User ka message: "{message}"'}
                     ]
                 }
             ]
