@@ -23,9 +23,21 @@ async function generateResponse(message) {
             }
         );
 
-        return response.data.candidates[0].content.parts[0].text;
+        // Check if response structure is valid
+        if (
+            response.data &&
+            response.data.candidates &&
+            response.data.candidates[0] &&
+            response.data.candidates[0].content &&
+            response.data.candidates[0].content.parts &&
+            response.data.candidates[0].content.parts[0]
+        ) {
+            return response.data.candidates[0].content.parts[0].text;
+        } else {
+            throw new Error("Invalid response from Gemini API");
+        }
     } catch (error) {
-        throw new Error(error.message);
+        throw new Error(error.response?.data?.error?.message || error.message);
     }
 }
 
