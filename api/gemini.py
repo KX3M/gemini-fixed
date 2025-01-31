@@ -18,22 +18,17 @@ def generate_response(message):
                 {
                     "role": "user",
                     "parts": [
-                        {"text": f'[you're a cute and caring girl reply to user message in hinglish language] User ka message: "{message}"'}
+                        {"text": f'[you\'re a cute and caring girl, reply in Hinglish] User ka message: "{message}"'}
                     ]
                 }
             ]
         }
-        
-        # Make the API request
-        response = requests.post(url, json=payload)
 
-        # Check if the response is successful
+        response = requests.post(url, json=payload)
         if response.status_code != 200:
             return f"Error: {response.status_code}, {response.text}"
 
         data = response.json()
-
-        # Check if 'candidates' exists in the response
         if "candidates" in data and data["candidates"]:
             return data["candidates"][0]["content"]["parts"][0]["text"]
         else:
@@ -41,21 +36,23 @@ def generate_response(message):
     except Exception as e:
         return str(e)
 
-@app.route("/gemini", methods=["GET"])
+# 🔹 GET request: Now uses /pythonbotz and ?msg=
+@app.route("/pythonbotz", methods=["GET"])
 def chat():
-    message = request.args.get("message")
+    message = request.args.get("msg")  # Changed from 'message' to 'msg'
     if not message:
-        return jsonify({"error": "Message parameter is required"}), 400
+        return jsonify({"error": "msg parameter is required"}), 400
 
     reply = generate_response(message)
     return jsonify({"reply": reply, "Owner": "@PythonBotz"})
 
-@app.route("/gemini", methods=["POST"])
+# 🔹 POST request: Uses JSON body with "msg"
+@app.route("/pythonbotz", methods=["POST"])
 def chat_post():
     data = request.get_json()
-    message = data.get("message")
+    message = data.get("msg")  # Changed from 'message' to 'msg'
     if not message:
-        return jsonify({"error": "Message is required"}), 400
+        return jsonify({"error": "msg is required"}), 400
 
     reply = generate_response(message)
     return jsonify({"reply": reply, "Owner": "@PythonBotz"})
