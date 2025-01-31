@@ -9,6 +9,7 @@ load_dotenv()
 app = Flask(__name__)
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+PROMPT = os.getenv("PROMPT")  # Fetching the prompt from .env
 
 def generate_response(message):
     try:
@@ -18,7 +19,7 @@ def generate_response(message):
                 {
                     "role": "user",
                     "parts": [
-                        {"text": f'Tu kaise ho? 😊 Tumhare message ka jawab dena hai! Main tumhe sweet aur thoda naughty tareeke se jawab dungi, hamesha Hinglish mein! 💖 Tumhare har question ka jawab dena mere liye bohot mazedaar hai! 😘 User ka message: "{message}"'}
+                        {"text": f'{PROMPT} User ka message: "{message}"'}
                     ]
                 }
             ]
