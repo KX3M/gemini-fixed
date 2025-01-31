@@ -8,7 +8,7 @@
   ],
   "routes": [
     {
-      "src": "/gemini",
+      "src": "/pythonbotz",
       "dest": "/api/gemini.py"
     }
   ]
