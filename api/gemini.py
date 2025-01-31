@@ -40,7 +40,7 @@ def chat():
         return jsonify({"error": "Message parameter is required"}), 400
 
     reply = generate_response(message)
-    return jsonify({"reply": reply, "Owner": "@MysticoFF"})
+    return jsonify({"reply": reply, "Owner": "@PythonBotz)
 
 @app.route("/gemini", methods=["POST"])
 def chat_post():
@@ -50,7 +50,7 @@ def chat_post():
         return jsonify({"error": "Message is required"}), 400
 
     reply = generate_response(message)
-    return jsonify({"reply": reply, "Owner": "@MysticoFF"})
+    return jsonify({"reply": reply, "Owner": "@PythonBotz)
 
 if __name__ == "__main__":
     app.run(debug=True)
